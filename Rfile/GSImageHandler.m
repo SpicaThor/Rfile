@@ -25,7 +25,21 @@
 #import "GSImageHandler.h"
 
 
+@interface GSImageHandler ()
+
+@property (nonatomic,strong) NSMutableSet *inserted;
+
+@end
+
+
 @implementation GSImageHandler
+
+- (NSMutableSet *)inserted {
+    if (!_inserted) {
+        _inserted = [NSMutableSet new];
+    }
+    return _inserted;
+}
 
 - (NSString *)type {
     return @"image";
@@ -38,14 +52,32 @@
 - (NSDictionary *)entriesForResourceAtPath:(NSString *)path {
     NSString *ext = [[path pathExtension] lowercaseString];
     if ([ext isEqualToString:@"png"] || [ext isEqualToString:@"jpg"]) {
-        NSString *filename = [path lastPathComponent];
-        NSString *key = [filename stringByDeletingPathExtension];
+        NSString *filename = [[path lastPathComponent] stringByDeletingPathExtension];
+        NSString *key = [self cleanKeyFromKey:filename];
+        
+        if ([self.inserted containsObject:key]) {
+            return nil;
+        }
+        filename = [key stringByAppendingPathExtension:ext];
+        [self.inserted addObject:key];
+        
         if (key.length && filename.length) {
             return @{key : filename};
         }
     }
     
     return nil;
+}
+
+- (NSString *)cleanKeyFromKey:(NSString *)string {
+    NSString *prefix2x = @"@2x";
+    NSString *prefix3x = @"@3x";
+    if ([string hasSuffix:prefix2x]) {
+        string = [string substringToIndex:string.length - prefix2x.length];
+    } else if ([string hasSuffix:prefix3x]) {
+        string = [string substringToIndex:string.length - prefix3x.length];
+    }
+    return string;
 }
 
 @end
