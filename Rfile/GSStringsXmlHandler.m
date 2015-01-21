@@ -45,6 +45,22 @@
                                 entries[actualKey] = [actualKey stringByAddingBackslashes];
                             }
                         }
+                    } else if ([lInnerKey isEqualToString:@"string-array"]) {
+                        NSArray *items = inner[innerKey];
+                        for (NSDictionary *stringArrayItem in items) {
+                            NSString *keyPrefix = stringArrayItem[@"name"];
+                            if ([keyPrefix length]) {
+                                NSString *fixedPrefix = [keyPrefix stringByAppendingString:@"_"];
+                                NSArray *items = stringArrayItem[@"item"];
+                                for (NSDictionary *stringValuePair in items) {
+                                    NSString *actualKey = stringValuePair[@"name"];
+                                    if ([actualKey length]) {
+                                        NSString *final = [fixedPrefix stringByAppendingString:actualKey];
+                                        entries[final] = [final stringByAddingBackslashes];
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
