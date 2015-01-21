@@ -16,6 +16,8 @@
 		2BF7ADE316BAC12600525014 /* GSImageHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF7ADE016BAC12600525014 /* GSImageHandler.m */; };
 		2BF7ADE416BAC12600525014 /* GSStringsHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF7ADE216BAC12600525014 /* GSStringsHandler.m */; };
 		2BF7ADE716BAC44800525014 /* GSFontHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BF7ADE616BAC44800525014 /* GSFontHandler.m */; };
+		D2FCFB8E1A6FB44100B34C27 /* GSStringsXmlHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = D2FCFB8D1A6FB44100B34C27 /* GSStringsXmlHandler.m */; };
+		D2FCFB911A6FB60E00B34C27 /* XMLReader.m in Sources */ = {isa = PBXBuildFile; fileRef = D2FCFB901A6FB60E00B34C27 /* XMLReader.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -62,6 +64,10 @@
 		2BF7ADE516BAC44800525014 /* GSFontHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSFontHandler.h; sourceTree = "<group>"; };
 		2BF7ADE616BAC44800525014 /* GSFontHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSFontHandler.m; sourceTree = "<group>"; };
 		2BF7ADE816BAC5BB00525014 /* GSFontLists.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GSFontLists.h; sourceTree = "<group>"; };
+		D2FCFB8C1A6FB44100B34C27 /* GSStringsXmlHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSStringsXmlHandler.h; sourceTree = "<group>"; };
+		D2FCFB8D1A6FB44100B34C27 /* GSStringsXmlHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSStringsXmlHandler.m; sourceTree = "<group>"; };
+		D2FCFB8F1A6FB60E00B34C27 /* XMLReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLReader.h; sourceTree = "<group>"; };
+		D2FCFB901A6FB60E00B34C27 /* XMLReader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLReader.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +172,10 @@
 				2BF7ADE516BAC44800525014 /* GSFontHandler.h */,
 				2BF7ADE616BAC44800525014 /* GSFontHandler.m */,
 				2BF7ADE816BAC5BB00525014 /* GSFontLists.h */,
+				D2FCFB8C1A6FB44100B34C27 /* GSStringsXmlHandler.h */,
+				D2FCFB8D1A6FB44100B34C27 /* GSStringsXmlHandler.m */,
+				D2FCFB8F1A6FB60E00B34C27 /* XMLReader.h */,
+				D2FCFB901A6FB60E00B34C27 /* XMLReader.m */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -196,7 +206,7 @@
 		2BCE89B615E5FDF6007DF5E7 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0440;
+				LastUpgradeCheck = 0620;
 				ORGANIZATIONNAME = "Gil Shapira";
 			};
 			buildConfigurationList = 2BCE89B915E5FDF6007DF5E7 /* Build configuration list for PBXProject "Rfile" */;
@@ -223,11 +233,13 @@
 			files = (
 				2BCE89C715E5FDF6007DF5E7 /* main.m in Sources */,
 				2BC9621E15E7C627001D0771 /* NSString+Rfile.m in Sources */,
+				D2FCFB911A6FB60E00B34C27 /* XMLReader.m in Sources */,
 				2B6D0DB01680EDF80091F3D7 /* GSRfileBuilder.m in Sources */,
 				2B6D0DB31680EE920091F3D7 /* GSRfileWriter.m in Sources */,
 				2BF7ADE316BAC12600525014 /* GSImageHandler.m in Sources */,
 				2BF7ADE416BAC12600525014 /* GSStringsHandler.m in Sources */,
 				2BF7ADE716BAC44800525014 /* GSFontHandler.m in Sources */,
+				D2FCFB8E1A6FB44100B34C27 /* GSStringsXmlHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -238,7 +250,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -266,7 +277,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

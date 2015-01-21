@@ -27,13 +27,15 @@
 #import "GSStringsHandler.h"
 #import "GSFontHandler.h"
 #import "GSRfileBuilder.h"
+#import "GSStringsXmlHandler.h"
 
 
 int main(int argc, const char *argv[]) {
     @autoreleasepool {
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        
         if (![defaults objectForKey:@"dir"] || ![defaults objectForKey:@"target"]) {
-            printf("Usage: Rfile -dir path -target file [-prefix <prefix>] [-fonts <os version>]\n");
+            printf("Usage: Rfile -dir path -target file [-prefix <prefix>] [-fonts <os version>] [-stringsXml <additionalStringsXmlFile>]\n");
             return 0;
         }
         
@@ -52,6 +54,14 @@ int main(int argc, const char *argv[]) {
             GSFontHandler *fontHandler = [GSFontHandler new];
             fontHandler.osVersion = [defaults floatForKey:@"fonts"];
             [builder addHandler:fontHandler];
+        }
+        
+        NSString *xmlStringsPath = [defaults stringForKey:@"stringsXml"];
+        printf("strings xml path: %s",[xmlStringsPath cStringUsingEncoding:NSUTF8StringEncoding]);
+        if (xmlStringsPath) {
+            GSStringsXmlHandler *stringsXmlHandler = [GSStringsXmlHandler new];
+            stringsXmlHandler.xmlFilePath = xmlStringsPath;
+            [builder addHandler:stringsXmlHandler];
         }
 
         [builder build];
